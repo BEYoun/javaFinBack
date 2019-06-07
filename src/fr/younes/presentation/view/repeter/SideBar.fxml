@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1500.0"
+	style="-fx-background-color: #fff;"
+	xmlns="http://javafx.com/javafx/8.0.171"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="fr.younes.presentation.controller.EmployerController">
+	<children>
+		<AnchorPane layoutX="229.0" layoutY="-6.0"
+			prefHeight="436.0" prefWidth="471.0" AnchorPane.bottomAnchor="0.0"
+			AnchorPane.leftAnchor="229.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0">
+
+			<children>
+				<Icon content="HELP_OUTLINE" layoutX="448.0" layoutY="14.0" />
+				<Pane fx:id="pannel_emp" layoutX="7.0" layoutY="2.0"
+					prefHeight="430.0" prefWidth="476.0"
+					style="-fx-background-color: #23CE6B;"
+					AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+					AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+				<Pane fx:id="pannel_procedure" layoutX="17.0" layoutY="12.0"
+					prefHeight="430.0" prefWidth="476.0"
+					style="-fx-background-color: #272D2D;"
+					AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+					AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+				<Pane fx:id="pannel_doc" layoutX="17.0" layoutY="12.0"
+					prefHeight="430.0" prefWidth="476.0"
+					style="-fx-background-color: #F6F8FF;"
+					AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+					AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+				<Pane fx:id="pannel_etape" layoutX="17.0" layoutY="6.0"
+					prefHeight="430.0" prefWidth="1180.0"
+					style="-fx-background-color: #0055B9;"
+					AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0"
+					AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+					<children>
+						<fx:include fx:id="folderList" prefHeight="700.0"
+							prefWidth="1270.0" source="../employer/IndexEmployer.fxml" />
+					</children>
+				</Pane>
+			</children>
+		</AnchorPane>
+		<AnchorPane layoutX="24.0" layoutY="94.0"
+			prefHeight="430.0" prefWidth="231.0"
+			style="-fx-background-color: #000;" AnchorPane.bottomAnchor="0.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1269.0"
+			AnchorPane.topAnchor="0.0">
+			<children>
+				<AnchorPane layoutX="-25.0" layoutY="51.0"
+					prefHeight="430.0" prefWidth="45.0"
+					style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0"
+					AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+					<effect>
+						<DropShadow color="WHITE" height="32.86" radius="27.05"
+							width="77.34" />
+					</effect>
+				</AnchorPane>
+				<JFXButton fx:id="btn_employer" alignment="BASELINE_LEFT"
+					graphicTextGap="40.0" layoutX="-1.0" layoutY="62.0"
+					onAction="#handleButtonAction" prefHeight="49.0" prefWidth="231.0"
+					text="Employer" textFill="WHITE" AnchorPane.leftAnchor="0.0"
+					AnchorPane.rightAnchor="0.0">
+					<graphic>
+						<Icon content="SWAP_CALLS" prefHeight="28.0" prefWidth="30.0" />
+					</graphic>
+				</JFXButton>
+				<JFXButton fx:id="btn_doc" alignment="BASELINE_LEFT"
+					graphicTextGap="40.0" layoutX="5.0" layoutY="160.0"
+					onAction="#handleButtonAction" prefHeight="49.0" prefWidth="231.0"
+					text="Document" textFill="WHITE" AnchorPane.leftAnchor="0.0">
+					<graphic>
+						<Icon content="HELP_OUTLINE" prefHeight="28.0"
+							prefWidth="30.0" />
+					</graphic>
+				</JFXButton>
+				<JFXButton fx:id="btn_procedure" alignment="BASELINE_LEFT"
+					graphicTextGap="40.0" layoutX="5.0" layoutY="111.0"
+					onAction="#handleButtonAction" prefHeight="49.0" prefWidth="231.0"
+					text="procedure" textFill="WHITE" AnchorPane.leftAnchor="0.0">
+					<graphic>
+						<Icon content="HELP_OUTLINE" prefHeight="28.0"
+							prefWidth="30.0" />
+					</graphic>
+				</JFXButton>
+				<JFXButton fx:id="btn_etap" alignment="BASELINE_LEFT"
+					graphicTextGap="40.0" layoutX="5.0" layoutY="209.0"
+					onAction="#handleButtonAction" prefHeight="49.0" prefWidth="231.0"
+					text="Etape" textFill="WHITE" AnchorPane.leftAnchor="0.0">
+					<graphic>
+						<Icon content="ACCOUNT_BALANCE_WALLET" prefHeight="28.0"
+							prefWidth="30.0" />
+					</graphic>
+				</JFXButton>
+			</children>
+			<effect>
+				<DropShadow color="#8a1313" radius="24.0225"
+					width="77.09" />
+			</effect>
+		</AnchorPane>
+	</children>
+</AnchorPane>
