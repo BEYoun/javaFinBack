@@ -195,4 +195,17 @@ public class ProcessusDAO extends DAO<Processus>{
 		return maList;
 	}
 
+	public boolean removeAllAffectationFromEmplX(int employeeTableNo) {
+		// TODO Auto-generated method stub
+		String sql = "update processus set emp_id=NULL  where emp_id=?";
+		try {
+			PreparedStatement statement = this.connect.prepareStatement(sql);
+			statement.setInt(1, employeeTableNo);
+			return statement.executeUpdate() > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

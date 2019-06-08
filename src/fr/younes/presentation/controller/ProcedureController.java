@@ -135,9 +135,9 @@ public class ProcedureController implements Initializable {
 	}
 
 	@FXML
-	private void setEmployerDeleteButtonClick(Event event) {
-//		EmployerTable getSelectedRow = ProcessusTableView.getSelectionModel().getSelectedItem();
-//		monProcessusManagement.deleteEmplById(getSelectedRow.getEmployeeTableNo());
+	private void setEmployerArchivButtonClick(Event event) {
+		ProcessusTable getSelectedRow = ProcessusTableView.getSelectionModel().getSelectedItem();
+		monProcessusManagement.deleteEmplById(getSelectedRow.getProcessusTableNo());
 	}
 
 	@FXML

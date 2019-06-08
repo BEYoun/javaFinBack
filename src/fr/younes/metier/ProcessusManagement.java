@@ -3,7 +3,11 @@ package fr.younes.metier;
 import java.util.ArrayList;
 
 import fr.younes.connection.SdzConnection;
+import fr.younes.connection.SdzConnectionArchive;
+import fr.younes.persistance.ArchivProcessusDAO;
+import fr.younes.persistance.DocumentDAO;
 import fr.younes.persistance.EmployeesDAO;
+import fr.younes.persistance.EtapeDAO;
 import fr.younes.persistance.ProcessusDAO;
 import fr.younes.presentation.model.EmployerTable;
 import fr.younes.presentation.model.EtapeTable;
@@ -14,6 +18,9 @@ import javafx.collections.ObservableList;
 public class ProcessusManagement {
 	private EmployeesDAO edao = new EmployeesDAO(SdzConnection.getInstance());
 	private ProcessusDAO pdao = new ProcessusDAO(SdzConnection.getInstance());
+	private EtapeDAO etdao = new EtapeDAO(SdzConnection.getInstance());
+	private DocumentDAO ddao = new DocumentDAO(SdzConnection.getInstance());
+	private ArchivProcessusDAO archPdao = new ArchivProcessusDAO(SdzConnectionArchive.getInstance());
 	public void addProcessus(Processus newProcess) {
 		// TODO Auto-generated method stub
 		pdao.addNewProcessWithoutEmp(newProcess);
@@ -54,6 +61,12 @@ public class ProcessusManagement {
 		ObservableList<ProcessusTable> adminTableData = FXCollections.observableArrayList();
 		adminTableData = pdao.listDataProcessusNonAffecterFromSqlAndAddToObservableList();
 		return adminTableData;
+	}
+	public void deleteEmplById(int processusTableNo) {
+		// TODO Auto-generated method stub
+		Processus myPro = pdao.find(processusTableNo);
+		
+		
 	}
 
 }

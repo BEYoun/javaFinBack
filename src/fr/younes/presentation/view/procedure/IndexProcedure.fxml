@@ -30,7 +30,7 @@
 							<children>
 								<Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#setEmployerAddNewButtonClick" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="AddNew" textFill="WHITE" AnchorPane.leftAnchor="14.0" />
 								<Button layoutX="134.0" layoutY="14.0" mnemonicParsing="false" onAction="#setEmployerEditButtonClick" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #09B28C;" text="Edit" textFill="WHITE" />
-								<Button alignment="CENTER" layoutX="254.0" layoutY="14.0" mnemonicParsing="false" onAction="#setEmployerDeleteButtonClick" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FF3F3C; -fx-text-fill: white;" text="Delete" />
+								<Button alignment="CENTER" layoutX="254.0" layoutY="14.0" mnemonicParsing="false" onAction="#setEmployerArchivButtonClick" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #FF3F3C; -fx-text-fill: white;" text="Archiver" />
 								<Text fill="#0091ea" layoutX="72.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Processus Registation Details" AnchorPane.bottomAnchor="517.482421875" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="61.1162109375" AnchorPane.topAnchor="46.517578125">
 									<font>
 										<Font size="18.0" />

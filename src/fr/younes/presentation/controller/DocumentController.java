@@ -6,8 +6,10 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import fr.younes.metier.Document;
 import fr.younes.metier.DocumentManagement;
 import fr.younes.metier.EmployeeManagement;
+import fr.younes.metier.EtapeManagement;
 import fr.younes.metier.ProcessusManagement;
 import fr.younes.presentation.model.AbstractModel;
 import fr.younes.presentation.model.DocumentTable;
@@ -32,6 +34,7 @@ public class DocumentController  implements Initializable {
 	protected EmployeeManagement monEmployeeManagement;
 	protected ProcessusManagement monProcessusManagement;
 	protected DocumentManagement monDocumentManagement;
+	protected EtapeManagement monEtapeManagement;
 	
 	
 	{
@@ -39,6 +42,7 @@ public class DocumentController  implements Initializable {
 		this.monEmployeeManagement= new EmployeeManagement();
 		this.monProcessusManagement = new ProcessusManagement();
 		this.monDocumentManagement = new DocumentManagement();
+		this.monEtapeManagement = new EtapeManagement();
 	}
 	
 	private int id=0;
@@ -46,9 +50,6 @@ public class DocumentController  implements Initializable {
 	@FXML TableColumn<DocumentTable,Integer> DocumentTableNo;
 	@FXML TableColumn<DocumentTable,String> DocumentTableName;
 	@FXML TableColumn<DocumentTable,String> DocumentTablePName;
-	@FXML TableColumn<DocumentTable,String> EtapeEmployerNom;
-	@FXML TableColumn<DocumentTable,String> EtapeEmployerPrenom;
-	@FXML TableColumn<DocumentTable,String> EtapeEmployerEmail;
 	
 	
 	@FXML
@@ -56,7 +57,7 @@ public class DocumentController  implements Initializable {
 	@FXML
 	private TextField ProcedureNom;
 	@FXML
-	private ChoiceBox<String> choixSeeProcedure,choixSelectProcedure;
+	private ChoiceBox<String> choixSeeProcedure,choixSelectProcedure,choixSelectEtape;
 	@FXML
     private Button adminClearButtonClick;
     @FXML
@@ -107,23 +108,27 @@ public class DocumentController  implements Initializable {
     }
 	@FXML
     private void setEmployerSaveButtonClick(Event event){
-//        Employee newEmployer = new Employee(ProcedureNom.getText(), 
-//        		EmployerLastName.getText(), 
-//        		EmployerEmail.getText(),
-//        		EmployerAddress.getText(),
-//        		Integer.parseInt(EmployerPhone.getText()), 
-//        		EmployerRole.getValue().toString());
-//        if(isSetAdminAddNewButtonClick) {
-//        	monEmployeeManagement.addEmp(newEmployer);
-//        }else if(isSetAdminEditButtonClick) {
+		
+		String choixEtape,choixProcess;
+		choixEtape = choixSelectEtape.getValue().toString();
+		choixProcess = choixSelectProcedure.getValue().toString();
+		String[] monString = choixEtape.split("/");
+		String[] monString2 = choixProcess.split("/");
+		int id_etape=Integer.parseInt(monString[1]);
+		int id_process=Integer.parseInt(monString2[1]);
+		
+        Document monDoc = new Document(ProcedureNom.getText(),id_etape, id_process);
+        if(isSetAdminAddNewButtonClick) {
+        	monDocumentManagement.addDoc(monDoc);
+        }else if(isSetAdminEditButtonClick) {
 //        	newEmployer.setId(this.id);
 //        	monEmployeeManagement.editUser(newEmployer);
-//        }
-//        EmployeeTableView.setItems(monEmployeeManagement.getDataEmployeeFromSqlAndAddToObservableList());
-//        adminSetAllDisable();
-//        adminSetAllClear();
-//        isSetAdminEditButtonClick=false;
-//        isSetAdminAddNewButtonClick = false;
+        }
+        DocumentTableView.setItems(monDocumentManagement.getDataEmployeeFromSqlAndAddToObservableList());
+        adminSetAllDisable();
+        adminSetAllClear();
+        isSetAdminEditButtonClick=false;
+        isSetAdminAddNewButtonClick = false;
     }
 	@FXML
 	private void setEmployerRefreshButtonClick(Event event) {
@@ -137,10 +142,10 @@ public class DocumentController  implements Initializable {
 		DocumentTableName.setCellValueFactory(new PropertyValueFactory<>("DocumentTableName"));
 		DocumentTablePName.setCellValueFactory(new PropertyValueFactory<>("DocumentTablePName"));
 		
-		//DocumentTableView.setItems(monEmployeeManagement.getDataEmployeeFromSqlAndAddToObservableList());
+		DocumentTableView.setItems(monDocumentManagement.getDataEmployeeFromSqlAndAddToObservableList());
 		
 		//choixEtape.getItems().addAll(monProcessusManagement.getDataProcessusFromSqlToObsevableList());
-		
+		choixSelectEtape.getItems().addAll(monEtapeManagement.getDataProcessusFromSqlToObsevableList());
 		choixSeeProcedure.getItems().addAll(monProcessusManagement.getDataProcessusFromSqlToObsevableList());
 		choixSelectProcedure.getItems().addAll(monProcessusManagement.getDataProcessusFromSqlToObsevableList());
 		
@@ -149,27 +154,18 @@ public class DocumentController  implements Initializable {
 	private void adminSetAllEnable(){
 		ProcedureNom.setDisable(false);
 		choixSelectProcedure.setDisable(false);
-		
+		choixSelectEtape.setDisable(false);
 		
 		adminSaveButtonClick.setDisable(false);
         adminClearButtonClick.setDisable(false);
     }
 	private void adminSetAllClear(){
 		ProcedureNom.clear();
-//		EmployerLastName.clear();
-//		EmployerEmail.clear();
-//		EmployerPhone.clear();
-//		EmployerAddress.clear();
     }
 	private void adminSetAllDisable(){
 		ProcedureNom.setDisable(true);
-//		EmployerLastName.setDisable(true);
-//		EmployerRole.setDisable(true);
-//		EmployerEmail.setDisable(true);
-//		EmployerPhone.setDisable(true);
-//		EmployerAddress.setDisable(true);
-//		EmployerProcedure.setDisable(true);
-//		EmployerEtape.setDisable(true);
+		choixSelectProcedure.setDisable(true);
+		choixSelectEtape.setDisable(true);
 		
 		adminSaveButtonClick.setDisable(true);
         adminClearButtonClick.setDisable(true);

@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.younes.connection.SdzConnection;
+import fr.younes.connection.SdzConnectionArchive;
+import fr.younes.persistance.ArchivEmployerDAO;
 import fr.younes.persistance.EmployeesDAO;
+import fr.younes.persistance.EtapeDAO;
+import fr.younes.persistance.ProcessusDAO;
 import fr.younes.presentation.model.EmployerTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class EmployeeManagement {
 	private EmployeesDAO edao = new EmployeesDAO(SdzConnection.getInstance());
+	private EtapeDAO etdao = new EtapeDAO(SdzConnection.getInstance());
+	private ProcessusDAO pdao = new ProcessusDAO(SdzConnection.getInstance());
+	private ArchivEmployerDAO archivEdao = new ArchivEmployerDAO(SdzConnectionArchive.getInstance());
 	public EmployeeManagement() {
 	}
 	
@@ -69,6 +76,9 @@ public class EmployeeManagement {
 
 	public boolean deleteEmplById(int employeeTableNo) {
 		// TODO Auto-generated method stub
+		archivEdao.create(edao.find(employeeTableNo));
+		etdao.removeAllAffectationFromEmplX(employeeTableNo);
+		pdao.removeAllAffectationFromEmplX(employeeTableNo);
 		return edao.delete(employeeTableNo);
 		
 	}

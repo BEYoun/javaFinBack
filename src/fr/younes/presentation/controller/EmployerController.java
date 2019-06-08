@@ -99,8 +99,9 @@ public class EmployerController  implements Initializable {
 		System.out.println(emp);
     }
 	@FXML
-    private void setEmployerDeleteButtonClick(Event event){
+    private void setEmployerArchiveButtonClick(Event event){
 		EmployerTable getSelectedRow = EmployeeTableView.getSelectionModel().getSelectedItem();
+		
 		monEmployeeManagement.deleteEmplById(getSelectedRow.getEmployeeTableNo());
     }
 	@FXML

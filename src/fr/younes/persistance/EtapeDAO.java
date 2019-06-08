@@ -11,6 +11,7 @@ import fr.younes.metier.Employee;
 import fr.younes.metier.Etape;
 import fr.younes.metier.Processus;
 import fr.younes.presentation.model.EtapeTable;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class EtapeDAO extends DAO<Etape>{
@@ -73,7 +74,19 @@ public class EtapeDAO extends DAO<Etape>{
 	@Override
 	public Etape find(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		Etape user = null;
+		String sql = "select * from etapes where etape_id=?;";
+		try {
+
+			PreparedStatement statement = this.connect.prepareStatement(sql);
+			statement.setInt(1, id);
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 	public ArrayList<Etape> getAll() {
@@ -204,6 +217,37 @@ public class EtapeDAO extends DAO<Etape>{
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	public boolean removeAllAffectationFromEmplX(int employeeTableNo) {
+		// TODO Auto-generated method stub
+		String sql = "update etapes set employee_id=NULL  where employee_id=?";
+		try {
+			PreparedStatement statement = this.connect.prepareStatement(sql);
+			statement.setInt(1, employeeTableNo);
+			return statement.executeUpdate() > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	public ObservableList<String> getAllNom() {
+		// TODO Auto-generated method stub
+		ObservableList<String> maList = FXCollections.observableArrayList();
+		String sql = "SELECT * FROM etapes";
+		System.out.println(sql);
+		try {
+			PreparedStatement statement = this.connect.prepareStatement(sql);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				maList.add(rs.getString("nom")+"/"+rs.getString("etape_id"));
+			}
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return maList;
 	}
 
 }
