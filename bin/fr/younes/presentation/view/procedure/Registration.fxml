@@ -22,12 +22,12 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
-                          <MenuItem mnemonicParsing="false" onAction="#setCourseCloseButtonClick" text="Close" />
+                          <MenuItem mnemonicParsing="false" text="Close" />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Help">
                         <items>
-                          <MenuItem mnemonicParsing="false" onAction="#setCourseAboutButtonClick" text="About" />
+                          <MenuItem mnemonicParsing="false" text="About" />
                         </items>
                       </Menu>
                     </menus>
@@ -69,7 +69,7 @@
                   </Text>
                   <Button layoutX="14.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #09B28C;" text="Delete" textFill="WHITE" />
                   <Button layoutX="126.0" layoutY="367.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: #09B28C;" text="Take" textFill="WHITE" />
-                  <Button layoutX="211.0" layoutY="419.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="157.0" style="-fx-background-color: #f57c00;" text="Done" textFill="WHITE">
+                  <Button layoutX="211.0" layoutY="419.0" mnemonicParsing="false" onAction="#AffectationEmployee" prefHeight="35.0" prefWidth="157.0" style="-fx-background-color: #f57c00;" text="Done" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>

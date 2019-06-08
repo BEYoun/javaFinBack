@@ -68,5 +68,9 @@ public class ProcessusManagement {
 		
 		
 	}
+	public void affecterEmployeeToProcessus(int processusTableNo, int employeeTableNo) {
+		// TODO Auto-generated method stub
+		pdao.affecterEmpToProcessus(processusTableNo, employeeTableNo);
+	}
 
 }

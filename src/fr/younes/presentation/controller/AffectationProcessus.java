@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import fr.younes.metier.EmployeeManagement;
 import fr.younes.metier.ProcessusManagement;
 import fr.younes.presentation.model.EmployerTable;
+import fr.younes.presentation.model.EtapeTable;
 import fr.younes.presentation.model.ProcessusTable;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -68,20 +69,13 @@ public class AffectationProcessus implements Initializable {
         this.tanother = a;
     }
 
-
-    private ObservableList getDataFromAllCourseAndAddToObservableList(String query){
-		return null;
-        
-    }
-
-    public ObservableList getDataFromCurrentCourseAndAddToObservableList(String query){
-		return null;
-        
-    }
-
-    public void studentRegistrationSectionUpdate() throws SQLException {
-      
-
+    @FXML
+    private void AffectationEmployee() {
+    	EmployerTable monChoixEmpl = EmployeeTableView.getSelectionModel().getSelectedItem();
+    	ProcessusTable monChoixProcessus = ProcessusTableView.getSelectionModel().getSelectedItem();
+    	monProcessusManagement.affecterEmployeeToProcessus(monChoixProcessus.getProcessusTableNo(),monChoixEmpl.getEmployeeTableNo());
+    	ProcessusTableView.setItems(monProcessusManagement.getDataProcessusNonAffecterFromSqlAndAddToObservableList());
+    	System.out.println(monChoixEmpl.getEmployeeTableEmail());
     }
 
     @Override
@@ -96,43 +90,6 @@ public class AffectationProcessus implements Initializable {
 		ProcessusNom.setCellValueFactory(new PropertyValueFactory<>("ProcessusTableNom"));
 		EmployeeTableView.setItems(monEmployeeManagement.getDataChefOnlyFromSqlAndAddToObservableList());
 		ProcessusTableView.setItems(monProcessusManagement.getDataProcessusNonAffecterFromSqlAndAddToObservableList());
-    }
-
-    @FXML
-    private void setRegistrationRefreshClick(Event event){
-        
-    }
-
-    @FXML
-    private void setRegistrationTakeClick(Event event) throws Exception{
-        
-
-    }
-
-    @FXML
-    private void setRegistrationDeleteClick(Event event) throws SQLException {
-        
-
-    }
-
-    @FXML
-    private void setRegistrationDoneClick(Event event){
-       
-    }
-
-    @FXML
-    private void setRegistrationSearchClick(Event event){
-        
-    }
-
-    @FXML
-    private void setCourseAboutButtonClick(Event event) throws IOException {
-        
-    }
-
-    @FXML
-    private void setCourseCloseButtonClick(Event event){
-       
     }
 
 

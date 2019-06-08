@@ -208,4 +208,17 @@ public class ProcessusDAO extends DAO<Processus>{
 		}
 	}
 
+	public boolean affecterEmpToProcessus(int processusTableNo, int employeeTableNo) {
+		String sql = "update processus set emp_id=?  where processus_id=?";
+		try {
+			PreparedStatement statement = this.connect.prepareStatement(sql);
+			statement.setInt(1, employeeTableNo);
+			statement.setInt(2, processusTableNo);
+			return statement.executeUpdate() > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }
